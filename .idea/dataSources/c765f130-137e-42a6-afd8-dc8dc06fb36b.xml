@@ -1047,143 +1047,116 @@
 </ObjectGrants>
     </user>
     <table id="333" parent="2" name="classe"/>
-    <table id="334" parent="2" name="emprunt"/>
-    <table id="335" parent="2" name="etudiant"/>
-    <table id="336" parent="2" name="livre"/>
-    <column id="337" parent="333" name="Code_Cl">
+    <table id="334" parent="2" name="etudiant"/>
+    <table id="335" parent="2" name="livre"/>
+    <column id="336" parent="333" name="Code_Cl">
       <Position>1</Position>
       <DataType>varchar(6)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="338" parent="333" name="Intitule">
+    <column id="337" parent="333" name="Intitule">
       <Position>2</Position>
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="339" parent="333" name="Effectif">
+    <column id="338" parent="333" name="Effectif">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="340" parent="333" name="classe_Code_Cl_uindex">
+    <index id="339" parent="333" name="classe_Code_Cl_uindex">
       <ColNames>Code_Cl</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="341" parent="333" name="PRIMARY">
+    <key id="340" parent="333" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>Code_Cl</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="342" parent="333" name="classe_Code_Cl_uindex">
+    <key id="341" parent="333" name="classe_Code_Cl_uindex">
       <ColNames>Code_Cl</ColNames>
       <UnderlyingIndexName>classe_Code_Cl_uindex</UnderlyingIndexName>
     </key>
-    <column id="343" parent="334" name="Matricule">
+    <column id="342" parent="334" name="Matricule">
       <Position>1</Position>
       <DataType>varchar(6)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="344" parent="334" name="Code_Liv">
-      <Position>2</Position>
-      <DataType>varchar(15)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="345" parent="334" name="Sortie">
-      <Position>3</Position>
-      <DataType>datetime|0s</DataType>
-    </column>
-    <column id="346" parent="334" name="Retour">
-      <Position>4</Position>
-      <DataType>datetime|0s</DataType>
-    </column>
-    <index id="347" parent="334" name="emprunt_etudiant_Matricule_fk">
-      <ColNames>Matricule</ColNames>
-      <Type>btree</Type>
-    </index>
-    <index id="348" parent="334" name="emprunt_livre_Code_Liv_fk">
-      <ColNames>Code_Liv</ColNames>
-      <Type>btree</Type>
-    </index>
-    <column id="349" parent="335" name="Matricule">
-      <Position>1</Position>
-      <DataType>varchar(6)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="350" parent="335" name="Nom">
+    <column id="343" parent="334" name="Nom">
       <Position>2</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="351" parent="335" name="Prenoms">
+    <column id="344" parent="334" name="Prenoms">
       <Position>3</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="352" parent="335" name="Sexe">
+    <column id="345" parent="334" name="Sexe">
       <Position>4</Position>
       <DataType>int(1)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="353" parent="335" name="Code_Cl">
+    <column id="346" parent="334" name="Code_Cl">
       <Position>5</Position>
       <DataType>varchar(6)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="354" parent="335" name="ETUDIANT_Matricule_uindex">
+    <index id="347" parent="334" name="ETUDIANT_Matricule_uindex">
       <ColNames>Matricule</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="355" parent="335" name="ETUDIANT_classe_Code_Cl_fk">
+    <index id="348" parent="334" name="ETUDIANT_classe_Code_Cl_fk">
       <ColNames>Code_Cl</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="356" parent="335" name="PRIMARY">
+    <key id="349" parent="334" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>Matricule</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="357" parent="335" name="ETUDIANT_Matricule_uindex">
+    <key id="350" parent="334" name="ETUDIANT_Matricule_uindex">
       <ColNames>Matricule</ColNames>
       <UnderlyingIndexName>ETUDIANT_Matricule_uindex</UnderlyingIndexName>
     </key>
-    <column id="358" parent="336" name="Code_Liv">
+    <column id="351" parent="335" name="Code_Liv">
       <Position>1</Position>
       <DataType>varchar(15)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="359" parent="336" name="Titre">
+    <column id="352" parent="335" name="Titre">
       <Position>2</Position>
       <DataType>varchar(40)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="360" parent="336" name="Auteur">
+    <column id="353" parent="335" name="Auteur">
       <Position>3</Position>
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="361" parent="336" name="Genre">
+    <column id="354" parent="335" name="Genre">
       <Position>4</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="362" parent="336" name="Prix">
+    <column id="355" parent="335" name="Prix">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="363" parent="336" name="LIVRE_Code_Liv_uindex">
+    <index id="356" parent="335" name="LIVRE_Code_Liv_uindex">
       <ColNames>Code_Liv</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="364" parent="336" name="PRIMARY">
+    <key id="357" parent="335" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>Code_Liv</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="365" parent="336" name="LIVRE_Code_Liv_uindex">
+    <key id="358" parent="335" name="LIVRE_Code_Liv_uindex">
       <ColNames>Code_Liv</ColNames>
       <UnderlyingIndexName>LIVRE_Code_Liv_uindex</UnderlyingIndexName>
     </key>

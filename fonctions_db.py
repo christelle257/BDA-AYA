@@ -37,7 +37,7 @@ def close_db(conn):
 
 
 def execute_query(conn: None, cursor: None, query: str, values=None, is_excute_many=False, is_result=False,
-                  is_result_many=False, close=True):
+                  is_result_many=False, close=False):
 	myresult = None
 	if not (conn and cursor):
 		conn, cursor = connect_db()
@@ -69,7 +69,7 @@ def create_db(conn, cursor):
 		    Effectif int         not null,
 		    constraint classe_Code_Cl_uindex
 		        unique (Code_Cl)
-		);
+		) ENGINE = InnoDB;
 	""")
 	execute_query(conn, cursor, """
 	create table if not exists livre
@@ -81,7 +81,7 @@ def create_db(conn, cursor):
 		    Prix     int         not null,
 		    constraint LIVRE_Code_Liv_uindex
 		        unique (Code_Liv)
-		);
+		) ENGINE = InnoDB;
 	""")
 	execute_query(conn, cursor, """
 		create table if not exists etudiant
@@ -93,23 +93,36 @@ def create_db(conn, cursor):
 		    Code_Cl   varchar(6)  not null,
 		    constraint ETUDIANT_Matricule_uindex
 		        unique (Matricule)
-		);
-		
+		) ENGINE = InnoDB;
+		""")
+
+	execute_query(conn, cursor, """
 		create index ETUDIANT_classe_Code_Cl_fk
 		    on etudiant (Code_Cl);
 		""")
+
 	execute_query(conn, cursor, """
 		create table if not exists emprunt
 		(
+			id int auto_increment primary key,
 		    Matricule varchar(6)  not null,
 		    Code_Liv  varchar(15) not null,
 		    Sortie    datetime    null,
 		    Retour    datetime    null
-		);
-		
+		) ENGINE = InnoDB;
+		""")
+
+	execute_query(conn, cursor, """
+		create unique index emprunt_id_uindex
+			on emprunt (id);
+	""")
+
+	execute_query(conn, cursor, """	
 		create index emprunt_etudiant_Matricule_fk
 		    on emprunt (Matricule);
-		
+		""")
+
+	execute_query(conn, cursor, """
 		create index emprunt_livre_Code_Liv_fk
 		    on emprunt (Code_Liv);
 		""")
