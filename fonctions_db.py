@@ -9,12 +9,25 @@ def connect_db():
 		conn = connector.connect(
 			host='localhost',
 			user='root',
-			password=''
+			password='',
+			database='bda',
 		)
 		cursor = conn.cursor()
 		return conn, cursor
 	except connector.Error as error:
-		print("probleme de connection {}".format(error))
+		try:
+			conn = connector.connect(
+				host='localhost',
+				user='root',
+				password='',
+			)
+			cursor = conn.cursor()
+			cursor.execute("CREATE DATABASE IF NOT EXISTS bda;")
+			conn.commit()
+			conn.close()
+			return connect_db()
+		except connector.Error as error:
+			print("probleme de connection {}".format(error))
 
 
 def close_db(conn):
