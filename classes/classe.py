@@ -8,7 +8,7 @@ class Classe(object):
 			classe = fonctions_db.execute_query(conn if conn else None, cursor, f"""SELECT * FROM classe WHERE Code_Cl = '{code_cl}' """,is_result=True)
 		self.Code_Cl, self.Intitule, self.Effectif = classe[0], classe[1], classe[2]
 
-		if eleve == None:
+		if eleve is None:
 			self.charge_eleves()
 		if stop == 1:
 			fonctions_db.close_db(conn)
