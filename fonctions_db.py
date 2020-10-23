@@ -45,5 +45,3 @@ def execute_query(conn: None, cursor: None, query: str, values=None, is_excute_m
 		conn.commit()
 	if myresult:
 		return myresult
-
-
