@@ -14,9 +14,9 @@ class Etudiant(object):
 			fonctions_db.close_db(conn)
 
 	@classmethod
-	def create(cls, livre: tuple):
+	def create(cls, etudiant: tuple):
 		conn, cursor = fonctions_db.connect_db()
 		fonctions_db.execute_query(conn, cursor,
-		                           f"""insert into livre (Code_Liv, Titre, Auteur, Genre, Prix) VALUES (%s ,%s, %s, %s, %s)""",
-		                           livre)
+		                           f"""insert into etudiant (Matricule, Nom, Prenoms, Sexe, Code_Cl) VALUES (%s ,%s, %s, %s, %s)""",
+		                           etudiant)
 		return cls(conn.insert_id(), cursor=cursor)
