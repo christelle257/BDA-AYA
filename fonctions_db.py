@@ -74,7 +74,7 @@ def create_db(conn, cursor):
 	execute_query(conn, cursor, """
 	create table if not exists livre
 		(
-		    Code_Liv varchar(15) not null,
+		    Code_Liv varchar(15) not null primary key,
 		    Titre    varchar(40) not null,
 		    Auteur   varchar(30) not null,
 		    Genre    varchar(20) not null,
@@ -113,4 +113,4 @@ def create_db(conn, cursor):
 		create index emprunt_livre_Code_Liv_fk
 		    on emprunt (Code_Liv);
 		""")
-	close_db()
+	close_db(conn)
