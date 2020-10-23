@@ -2,11 +2,11 @@ import fonctions_db
 
 
 class Emprunt(object):
-	def __init__(self, code_liv, cursor=None, stop=1, livre=None):
+	def __init__(self, id_emprunt, cursor=None, stop=1, emprunt=None):
 		if cursor == None:
 			conn, cursor = fonctions_db.connect_db()
-		if livre == None:
-			livre = fonctions_db.execute_query(conn if conn else None, cursor,
-			                                    f"""SELECT * FROM livre WHERE Code_Liv = '{code_liv}' """,
+		if emprunt == None:
+			emprunt = fonctions_db.execute_query(conn if conn else None, cursor,
+			                                    f"""SELECT * FROM emprunt WHERE id = '{id_emprunt}' """,
 			                                    is_result=True)
-		self.Code_Liv, self.Titre, self.Auteur, self.Genre, self.Prix = livre[0], livre[1], livre[2], livre[3], livre[4]
+		self.id, self.Matricule, self.Code_Liv, self.Sortie, self.Retour = emprunt[0], emprunt[1], emprunt[2], emprunt[3], emprunt[4]
