@@ -16,5 +16,5 @@ class Emprunt(object):
 	def create(cls, emprunt: tuple):
 		conn, cursor = fonctions_db.connect_db()
 		fonctions_db.execute_query(conn, cursor,
-		                           f"""insert into emprunt (Matricule, Code_Liv, Sortie, Retour) VALUES (%s, %s, %s, %s)""", emprunt)
-
+		                           f"""insert into emprunt (Matricule, Code_Liv, Sortie, Retour) VALUES (%s, %s, %s, %s)""", emprunt, close)
+		return cls(conn.insert_id(), cursor=cursor)

@@ -12,3 +12,11 @@ class Etudiant(object):
 		self.Matricule, self.Nom, self.Prenoms, self.Sexe, self.classe = etudiant[0], etudiant[1], etudiant[2], etudiant[3], classes.classe.Classe(code_cl=etudiant[4])
 		if stop == 1:
 			fonctions_db.close_db(conn)
+
+	@classmethod
+	def create(cls, livre: tuple):
+		conn, cursor = fonctions_db.connect_db()
+		fonctions_db.execute_query(conn, cursor,
+		                           f"""insert into livre (Code_Liv, Titre, Auteur, Genre, Prix) VALUES (%s ,%s, %s, %s, %s)""",
+		                           livre)
+		return cls(conn.insert_id(), cursor=cursor)
